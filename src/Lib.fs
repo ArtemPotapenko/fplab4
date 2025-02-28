@@ -1,4 +1,5 @@
 namespace PingPong
+
 open System.Windows.Forms
 open System.Drawing
 
@@ -18,6 +19,7 @@ type GameState =
       Ball: Ball
       LeftScore: int
       RightScore: int }
+
 module Lib =
     let initialGameState =
         { LeftPaddle =
@@ -48,9 +50,18 @@ module Lib =
         let newY = position.Y + direction
 
         match newY with
-        | y when y < 0 -> { Position = Point(position.X, 0); Width = 20; Height = height }
-        | y when y + height > 600 -> { Position = Point(position.X, 600 - height); Width = 20; Height = height }
-        | _ ->{ Position = Point(position.X, newY); Width = 20; Height = height }
+        | y when y < 0 ->
+            { Position = Point(position.X, 0)
+              Width = 20
+              Height = height }
+        | y when y + height > 600 ->
+            { Position = Point(position.X, 600 - height)
+              Width = 20
+              Height = height }
+        | _ ->
+            { Position = Point(position.X, newY)
+              Width = 20
+              Height = height }
 
     let checkPaddleCollision ball (paddle: Paddle) =
         let withinXBounds =
@@ -166,7 +177,14 @@ module Lib =
             let font = new Font("Arial", 20F)
 
             e.Graphics.DrawString(
-                "Score: " + string (!gameStateRef).LeftScore + " - "+ string (!gameStateRef).RightScore, font, Brushes.Black, 300.f, 20.f
+                "Score: "
+                + string (!gameStateRef).LeftScore
+                + " - "
+                + string (!gameStateRef).RightScore,
+                font,
+                Brushes.Black,
+                300.f,
+                20.f
             ))
 
         let timer = new Timer(Interval = 30)

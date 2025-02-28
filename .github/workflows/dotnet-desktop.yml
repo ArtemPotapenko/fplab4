@@ -13,6 +13,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      
+      - name: Install Fantomas (Code Formatter)
+        run: dotnet tool install --create-manifest-if-needed -g Fantomas
+
+      - name: Format code with Fantomas (App.fs)
+        run: fantomas src/App.fs
+
+      - name: Format code with Fantomas (Lib.fs)
+        run: fantomas src/Lib.fs      
 
       - name: Set up .NET SDK
         uses: actions/setup-dotnet@v3
