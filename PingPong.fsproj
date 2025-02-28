@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <UseWPF>false</UseWPF>
+        <UseWindowsForms>true</UseWindowsForms>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="src\Lib.fs" />
+        <Compile Include="src\App.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Reactive" Version="6.0.1"/>
+    </ItemGroup>
+</Project>
